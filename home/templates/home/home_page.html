@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static wagtailuserbar i18n wagtailcore_tags %}
+
+{% block content %}
+{% for block in page.body %}
+
+    {% include_block block with block_id=block.id %}
+
+{% endfor %}
+{% endblock content %}
