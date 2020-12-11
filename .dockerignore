@@ -37,5 +37,3 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-_migrations/*
-!_migrations/__init__.py
