@@ -1,13 +1,26 @@
+{% load wagtailcore_tags %}
 <nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
+  <div class="nav-wrapper container">
 
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-    </div>
-  </nav>
+    <a id="logo-container" href="#" class="brand-logo">{{request.site.site_name}}</a>
+    <ul class="right hide-on-med-and-down">
+      
+      {% for menu in menuitems %}
+      <li>
+        <a href="{{menu.url}}">{{menu.title}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+
+
+
+    <ul id="nav-mobile" class="sidenav">
+      {% for menu in menuitems %}
+      <li>
+        <a href="{{menu.url}}">{{menu.title}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  </div>
+</nav>

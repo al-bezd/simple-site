@@ -1,8 +1,10 @@
 import json
 from django import forms
+from django.db import models
 from django.forms import Widget, widgets
 from django.utils.encoding import force_str
 from django.utils.functional import cached_property
+from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core.blocks import FieldBlock
 from wagtail.core.fields import StreamField
 
@@ -221,6 +223,7 @@ class SingleImageSlide(blocks.StructBlock):
     image = ImageChooserBlock(
         label='Image',
     )
+    page = blocks.PageChooserBlock(required=False)
 
 
 class ImageSliderBlock(blocks.StructBlock):
@@ -228,6 +231,8 @@ class ImageSliderBlock(blocks.StructBlock):
         SingleImageSlide(),
         label="Image",
     )
+
+
 
     class Meta:
         template = 'wagtail_blocks/image_slider.html'
@@ -263,6 +268,15 @@ class CarouselBlock(blocks.StructBlock):
     )
     class Meta:
         template = 'wagtail_blocks/carousel.html'
+        #icon = "list-ul"
+
+class CarouselBlockFull(blocks.StructBlock):
+    content = blocks.ListBlock(
+        SingleImageSlide(),
+        label="Image",
+    )
+    class Meta:
+        template = 'wagtail_blocks/carouselfull.html'
         #icon = "list-ul"
 
 class CollapsibleSingle(blocks.StructBlock):
@@ -352,6 +366,8 @@ def default_blocks():
         ('map', MapBlock()),
         ('Badget_list', BadgetBlock()),
         ('Carousel', CarouselBlock()),
+        ('CarouselFull', CarouselBlockFull()),
+
         ('Collapsible', CollapsibleBlock()),
         ('Parallax', ParallaxBlock()),
         ('CKEditor5', CKEditor5Block()),
