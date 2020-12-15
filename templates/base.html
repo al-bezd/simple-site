@@ -1,0 +1,21 @@
+{% load static wagtailuserbar %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% include "blocks/head.html" %}
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  {% include "blocks/navbar.html" %}
+  {% wagtailuserbar %}
+  {% block "content" %}{% endblock %}
+
+  {% include "blocks/footer.html" %}
+
+  <!--  Scripts-->
+  {% include "blocks/script.html" %}
+  {% block extra_js %}{% endblock %}
+  </body>
+</html>
+
