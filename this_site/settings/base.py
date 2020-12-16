@@ -61,7 +61,7 @@ TEMPLATES = [
             'templates',
             os.path.join(BASE_DIR, 'templates'),
             os.path.join(PROJECT_DIR, 'templates'),
-            '/home/d/drsashka/pravozanamy/public_html/simple-site/templates'
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
