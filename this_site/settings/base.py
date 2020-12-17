@@ -5,6 +5,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     'home',
     'search',
+'site_settings',
+
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -17,6 +19,7 @@ INSTALLED_APPS = [
     'wagtail.search',
     'wagtail.admin',
     'wagtail.core',
+    'wagtail.contrib.settings',
 
     'modelcluster',
     'taggit',
@@ -27,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     #'wagtail_ckeditor',
     'wagtailfontawesome',
     'wagtail_blocks',
@@ -34,6 +38,7 @@ INSTALLED_APPS = [
     #'wagtail.contrib.modeladmin',
     #'wagtail.contrib.settings',  # Only required when WAGTAILTRANS_LANGUAGES_PER_SITE=True
     #'wagtailtrans',
+
 ]
 
 MIDDLEWARE = [
@@ -70,6 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wagtail.contrib.settings.context_processors.settings',
+
             ],
         },
     },

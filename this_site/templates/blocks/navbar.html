@@ -2,15 +2,28 @@
 <nav class="white" role="navigation">
   <div class="nav-wrapper container">
 
-    <a id="logo-container" href="#" class="brand-logo">{{request.site.site_name}}</a>
-    <ul class="right hide-on-med-and-down">
-      
-      {% for menu in menuitems %}
-      <li>
-        <a href="{{menu.url}}">{{menu.title}}</a>
-      </li>
-      {% endfor %}
-    </ul>
+    <div class="row">
+      <div class="col s3">
+        <a id="logo-container" href="#" class="brand-logo">{{request.site.site_name}}</a>
+      </div>
+      <div class="col s7">
+
+        <ul class="right hide-on-med-and-down">
+          {% for menu in menuitems %}
+          <li>
+            <a href="{{menu.url}}">{{menu.title}}</a>
+          </li>
+          {% endfor %}
+        </ul>
+
+      </div>
+      <div class="col s2">
+        <a href="tel:{{ settings.site_settings.ContactSettings.tel1 }}">{{ settings.site_settings.ContactSettings.tel1 }}</a>
+        <a href="tel:{{ settings.site_settings.ContactSettings.tel2 }}">{{ settings.site_settings.ContactSettings.tel2 }}</a>
+      </div>
+    </div>
+
+
 
 
 
