@@ -20,6 +20,39 @@
       }
 }
 </style>
+
+
+    <div class="row desktop-nav-bar">
+        <div class="col s12 grey lighten-2 right-align">
+
+    <div class="nav-wrapper">
+            {% if request.user.is_authenticated %}
+            <ul>
+                <li>
+                    <a class="inline" style="color: #444;" href="{% url 'account_logout' %}">
+                        <i class="material-icons">person_outline</i><p class="inline" style="vertical-align: super;">Выйти</p>
+                    </a>
+                </li>
+                {% else %}
+                <li>
+                    <a style="color: #444;" href="{% url 'account_registry' %}">
+                        <i class="material-icons">person_add</i>
+                        <p class="inline" style="vertical-align: super;">Зарегистрироваться</p>
+                    </a>
+                </li>
+                <li>
+                    <a style="color: #444;" href="{% url 'account_login' %}">
+                        <i class="material-icons">person</i>
+                        <p class="inline" style="vertical-align: super;">Войти</p>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+    </div>
+        </div>
+    </div>
+
+
 <div class="row desktop-nav-bar" >
   <div class="col s3">
     <a
