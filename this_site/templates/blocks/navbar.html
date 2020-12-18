@@ -22,23 +22,38 @@
 </style>
 
 
-    <div class="row desktop-nav-bar">
-        <div class="col s12 grey lighten-2 right-align">
+    <div class="row desktop-nav-bar ">
+        <div class="col s12 grey lighten-2 right-align ">
 
-    <div class="nav-wrapper">
+    <div class="nav-wrapper container">
+        <ul style="display: inline-flex;">
             {% if request.user.is_authenticated %}
-            <ul>
-                <li>
-                    <a class="inline" style="color: #444;" href="{% url 'account_logout' %}">
-                        <i class="material-icons">person_outline</i><p class="inline" style="vertical-align: super;">Выйти</p>
+
+                <li >
+                    <a  style="color: #444;"
+                        href="{% url 'account_logout' %}">
+
+                        <p class="inline"><i style="vertical-align: text-top;
+                                        margin-right: 0.2em;" class="material-icons">person_outline</i>Выйти</p>
                     </a>
                 </li>
                 {% else %}
-
                 <li>
-                    <a style="color: #444;" href="{% url 'account_login' %}">
-                        <i class="material-icons">person</i>
-                        <p class="inline" style="vertical-align: super;">Войти</p>
+                    <a style="color: #444;"
+                       href="{% url 'account_signup' %}">
+
+                        <p class="inline"><i style="vertical-align: text-top;
+                                        margin-right: 0.2em;"  class="material-icons">person_add</i>Зарегистрироваться</p>
+                    </a>
+                </li>
+                <li >
+                    <a style="color: #444;"
+                       href="{% url 'account_login' %}">
+
+                        <p class="inline"><i
+                                style="vertical-align: text-top;
+                                        margin-right: 0.2em;"
+                                class="material-icons">person</i>Войти</p>
                     </a>
                 </li>
                 {% endif %}
@@ -48,7 +63,7 @@
     </div>
 
 
-<div class="row desktop-nav-bar" >
+<div class="row desktop-nav-bar container" >
   <div class="col s3">
     <a
             id="logo-container"
