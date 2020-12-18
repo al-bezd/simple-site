@@ -4,6 +4,7 @@ from wagtail.core.fields import StreamField
 
 from wagtail.core.models import Page
 
+from site_settings.blocks import SocialBlock
 from this_site.settings import dev
 from wagtail_blocks.blocks import default_blocks, RowBlock
 
@@ -14,6 +15,7 @@ from wagtail_blocks.blocks import default_blocks, RowBlock
 class HomePage(Page):
     body = StreamField(default_blocks()+[
         ('Row', RowBlock()),
+        ('Social',SocialBlock())
     ], blank=True)
 
     content_panels = Page.content_panels + [

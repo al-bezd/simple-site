@@ -166,3 +166,5 @@ BASE_URL = 'https://xn--80aaagzi1agghl.xn--p1ai'
         'WIDGET': 'wagtail_ckeditor.widgets.CKEditor'
     }
 }'''
+
+SITE_ID = 1
