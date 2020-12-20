@@ -2,3 +2,10 @@
   <script src="/static/js/materialize.js"></script>
   <script src="/static/js/init.js"></script>
   <script>M.AutoInit()</script>
+  <script>
+   {% if messages %}
+     {% for message in messages %}
+       M.toast(`Сообщение: ${ {{message}} }`)
+     {% endfor %}
+   {% endif %}
+  </script>

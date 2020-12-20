@@ -1,10 +1,12 @@
+<div class="container">
+
     <div id="toolbar-containerCKeditor5_{{ widget.name }}"></div>
     <div id="editorCKeditor5_{{ widget.name }}">
-        {% if widget.value %}{{ widget.value }}{% endif %}
+        {% if widget.value %}{{ widget.value|safe }}{% endif %}
     </div>
     <textarea id="{{ widget.name }}"
               name="{{ widget.name }}"
-              hidden>{% if widget.value %}{{ widget.value }}{% endif %}</textarea>
+              hidden>{% if widget.value %}{{ widget.value|safe }}{% endif %}</textarea>
     <script>
         DecoupledEditor
         .create( document.querySelector( '#editorCKeditor5_{{ widget.name }}' ) )
@@ -25,5 +27,6 @@
                 jQuery('#{{ widget.name }}').text(`${jQuery('#editorCKeditor5_{{ widget.name }}').html()}`)
         });
     </script>
+</div>
 
 

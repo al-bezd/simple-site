@@ -1,25 +1,5 @@
 {% load wagtailcore_tags %}
-<style>
-.logo-desktop{
-    white-space: nowrap;
-    color: #444;
-    margin: 20px;
-    font-size: 3em;
-}
-.mobile-logo{
-    display: none !important;
-    white-space: nowrap;
-    font-size: 3em;
-    }
-@media (max-width: 600px) {
-  .desktop-nav-bar {display: none;}
-  .mobile-logo{
-      display: block !important;
-      white-space: nowrap;
-      font-size: 3em;
-      }
-}
-</style>
+
 
 
     <div class="row desktop-nav-bar ">
@@ -67,7 +47,7 @@
   <div class="col s3">
     <a
             id="logo-container"
-            href="#"
+            href="/"
             class="brand-logo"
 
     ><h1 class="logo-desktop">{{request.site.site_name}}</h1></a>

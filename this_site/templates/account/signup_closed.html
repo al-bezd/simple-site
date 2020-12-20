@@ -1,11 +1,23 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Sign Up Closed" %}{% endblock %}
+{% block head_title %}{% trans "Регистрация Закрыта" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up Closed" %}</h1>
 
-<p>{% trans "We are sorry, but the sign up is currently closed." %}</p>
+<div class="container ">
+    <div class="row">
+        <div class="col s12 m4 l3"></div>
+        <div class="col s12 m4 l6">
+
+            <h1>{% trans "Регистрация Закрыта" %}</h1>
+
+            <p>{% trans "Мы сожалеем, но регистрация в настоящее время закрыта." %}</p>
+        </div>
+
+
+        <div class="col s12 m4 l3"></div>
+    </div>
+</div>
 {% endblock %}

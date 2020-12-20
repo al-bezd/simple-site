@@ -1,0 +1,41 @@
+  .btn-center{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  .logo-desktop{
+    white-space: nowrap;
+    color: #444;
+    margin: 20px;
+    font-size: 3em;
+}
+.mobile-logo{
+    display: none !important;
+    white-space: nowrap;
+    font-size: 3em;
+    }
+@media (max-width: 600px) {
+  .desktop-nav-bar {display: none;}
+  .mobile-logo{
+      display: block !important;
+      white-space: nowrap;
+      font-size: 3em;
+      }
+}
+
+   .inline {
+    display: inline;
+   }
+
+   li.inline {
+    display: inline;
+    margin-right: 0.6em;
+
+   }
+   svg{
+       color:#bfbebd
+   }
+   svg:hover{
+     color:red;
+     transition: 1s;
+   }

@@ -350,6 +350,7 @@ class CKEditor5Block(blocks.TextBlock):
 
     class Meta:
         icon = "pilcrow"
+        template = 'wagtail_blocks/CKEditor5.html'
 
 def default_blocks():
     return [

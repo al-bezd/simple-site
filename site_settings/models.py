@@ -30,14 +30,15 @@ class ContactSettings(BaseSetting):
         verbose_name = 'Контакты'
         verbose_name_plural = verbose_name
 
-    tel1     = models.CharField(max_length=12, blank=True, null=True, help_text="Телефон №1")
-    tel2     = models.CharField(max_length=12, blank=True, null=True, help_text="Телефон №2")
-    youtube = models.URLField(blank=True, null=True, help_text="YouTube Channel URL")
+    tel1     = models.CharField(max_length=12, blank=True, null=True, help_text="Телефон №1", verbose_name="Телефон №1")
+    tel2     = models.CharField(max_length=12, blank=True, null=True, help_text="Телефон №2", verbose_name="Телефон №2")
+    email    = models.EmailField(blank=True, null=True, verbose_name="Email")
 
     panels = [
         MultiFieldPanel([
             FieldPanel("tel1"),
             FieldPanel("tel2"),
+            FieldPanel("email"),
 
         ], heading="Контакты")
     ]

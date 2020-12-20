@@ -1,33 +1,41 @@
+{% load wagtail_site_settings_tags  %}
+
+
 <footer class="page-footer teal">
     <div class="container">
       <div class="row">
+        <div class="col l3 s12">
+          <h5 class="white-text">Наши контакты</h5>
+          <ul>
+            <li><a style="color: #fff;font-size:1.3em"
+                   href="mail:{{ settings.site_settings.ContactSettings.email }}">
+              {{ settings.site_settings.ContactSettings.email }}</a></li>
+            <hr>
+            <li><a style="color: #fff;font-size:1.3em"
+                   href="tel:{{ settings.site_settings.ContactSettings.tel1 }}"><b>
+              {{ settings.site_settings.ContactSettings.tel1 }}</b></a></li>
+            <li><a style="color: #fff;font-size:1.3em"
+                   href="tel:{{ settings.site_settings.ContactSettings.tel2 }}">
+              {{ settings.site_settings.ContactSettings.tel2 }}</a></li>
+          </ul>
+          <p class="grey-text text-lighten-4"></p>
+
+
+        </div>
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
+          <h5 class="white-text">Карта сайта</h5>
+          <div class="col m4 l4 s12">
+            {% site_map %}
+          </div>
 
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+          <h5 class="white-text">Свяжитесь с нами!</h5>
+          {% social_as_ul %}
         </div>
       </div>
     </div>
-    <div class="footer-copyright">
+    <div class="footer-copyright center">
       <div class="container">
       Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>

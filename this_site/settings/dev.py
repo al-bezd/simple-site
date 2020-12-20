@@ -10,7 +10,8 @@ SECRET_KEY = '!=6hkdyfvpsko+yirl9d4bddvizdwhwv-w27-nv%tpz8-d+876'
 ALLOWED_HOSTS = ['*'] 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+if not DEBUG:
+    ACCOUNT_USERNAME_BLACKLIST = ["admin", "god"]
 
 try:
     from .local import *

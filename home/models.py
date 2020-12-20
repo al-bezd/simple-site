@@ -2,12 +2,23 @@ from django.db import models
 from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.core.fields import StreamField, RichTextField
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel
-from wagtail.core.models import Page
+from wagtail.core.models import Page, AbstractPage
 from wagtail.search import index
 from site_settings.blocks import SocialBlock
 from this_site.settings import dev
 from wagtail_blocks.blocks import default_blocks, RowBlock
 from wagtail.images.edit_handlers import ImageChooserPanel
+from django.template.defaultfilters import slugify as django_slugify
+from django.utils.translation import gettext_lazy as _
+
+alphabet = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i',
+            'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't',
+            'у': 'u', 'ф': 'f', 'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch', 'ы': 'i', 'э': 'e', 'ю': 'yu',
+            'я': 'ya'}
+
+
+def slugify(s):
+    return django_slugify(''.join(alphabet.get(w, w) for w in s.lower()))
 
 
 class HomePage(Page):
@@ -39,11 +50,16 @@ class HomePage(Page):
 
         return context
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
 
 class BlogCategories(Page):
-    #class Meta:
+    # class Meta:
     #    verbouse_name = "Категория (Блог)"
     intro = RichTextField(blank=True)
+
     image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.SET_NULL,
@@ -75,12 +91,17 @@ class BlogCategories(Page):
 
     def get_categories(self):
         return BlogIndexPage.objects.filter(
-            #live=True
+            # live=True
         )
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
+
     image = models.ForeignKey(
         'wagtailimages.Image',
         on_delete=models.SET_NULL,
@@ -95,8 +116,11 @@ class BlogIndexPage(Page):
 
     def get_posts(self):
         return self.get_children()
-        #return  a
+        # return  a
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
 
 class BlogPage(Page):
@@ -158,3 +182,7 @@ class BlogPage(Page):
         )
 
         return context
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)

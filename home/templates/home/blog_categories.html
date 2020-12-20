@@ -1,24 +1,8 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags  wagtailimages_tags %}
+{% load wagtailcore_tags  wagtailimages_tags wagtail_home_tags %}
 
-{% block breadcrumb %}
-{% if self.get_ancestors|length > 1 %}
-<nav>
-    <div class="container">
-        <div class="nav-wrapper">
-            <div class="col s12">
-                {% for page in self.get_ancestors %}
-                {% if page.is_root == False %}
-                <a href="{% pageurl page %}" class="breadcrumb">{{page.title}}</a>
-                {% endif %}
-                {% endfor %}
-                <a href="#" class="breadcrumb">{{self.title}}</a>
-            </div>
-        </div>
-    </div>
-</nav>
-{% endif %}
-{% endblock breadcrumb %}
+{% block breadcrumb %}{% breadcrumbs %}{% endblock breadcrumb %}
+
 {% block image %}
 <div class="">
     <div class="parallax-container">
@@ -47,7 +31,7 @@
 
 
         <div class="col s12 m4">
-            <div class="card">
+            <div class="card z-depth-4">
                 <div class="card-image waves-effect waves-block waves-light">
                     {% image post.image fill-370x280 class="activator" %}
                 </div>
