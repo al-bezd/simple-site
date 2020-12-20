@@ -6,14 +6,22 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+ {% wagtailuserbar %}
 
   {% include "blocks/navbar.html" %}
-  {% wagtailuserbar %}
+  {% block breadcrumb %}
+  {% endblock breadcrumb %}
+
+
+  {% block image %}{% endblock %}
+  {% block title %}{% endblock %}
+
   {% block content %}{% endblock %}
 
-  {% include "blocks/footer.html" %}
 
-  <!--  Scripts-->
+
+
+  {% include "blocks/footer.html" %}
   {% include "blocks/script.html" %}
   {% block extra_js %}{% endblock %}
   </body>

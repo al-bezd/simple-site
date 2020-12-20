@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static wagtailuserbar i18n wagtailcore_tags wagtailimages_tags  %}
+
+{% block breadcrumb %}
+{% if self.get_ancestors|length > 1 %}
+<nav>
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="col s12">
+                {% for page in self.get_ancestors %}
+                {% if page.is_root == False %}
+                <a href="{% pageurl page %}" class="breadcrumb">{{page.title}}</a>
+                {% endif %}
+                {% endfor %}
+                <a href="#" class="breadcrumb">{{self.title}}</a>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endif %}
+{% endblock breadcrumb %}
+
+{% block title %}
+<div class="container">
+    <h1 class="center">{{ page.title }}</h1>
+</div>
+{% endblock title %}
+
+{% block image %}
+<div class="">
+    <div class="parallax-container">
+      <div class="parallax">
+       {% image page.image original %}
+
+      </div>
+    </div>
+</div>
+<script>
+  $(document).ready(function(){
+    $('.parallax').parallax()
+  })
+</script>
+{% endblock image %}
+
+{% block content %}
+<div class="container ">
+    {{ page.content|richtext  }}
+</div>
+{% endblock content %}
+

@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags  wagtailimages_tags %}
+
+{% block breadcrumb %}
+{% if self.get_ancestors|length > 1 %}
+<nav>
+    <div class="container">
+        <div class="nav-wrapper">
+            <div class="col s12">
+                {% for page in self.get_ancestors %}
+                {% if page.is_root == False %}
+                <a href="{% pageurl page %}" class="breadcrumb">{{page.title}}</a>
+                {% endif %}
+                {% endfor %}
+                <a href="#" class="breadcrumb">{{self.title}}</a>
+            </div>
+        </div>
+    </div>
+</nav>
+{% endif %}
+{% endblock breadcrumb %}
+{% block image %}
+<div class="">
+    <div class="parallax-container">
+      <div class="parallax">
+       {% image page.image original %}
+      </div>
+    </div>
+</div>
+<script>
+  $(document).ready(function(){
+    $('.parallax').parallax()
+  })
+</script>
+{% endblock image %}
+
+{% block content %}
+<div class="container">
+    <div class="center"><h1>{{ page.title }}</h1></div>
+    <blockquote>{{ page.intro|richtext }}</blockquote>
+
+    <div class="row">
+
+        {% if page.get_posts.count > 0 %}
+
+            {% for post in page.get_posts %}
+        <script>debogging; console.log(post.image)</script>
+
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    {% image post.blogpage.image fill-370x280 class="activator" %}
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4">{{ post.title }}<i class="material-icons right">more_vert</i></span>
+                    <p><a href="{% pageurl post %}">{{ post.title }}</a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">{{ post.title }}<i
+                            class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+            </div></div>
+            {% endfor %}
+
+        {% else %}
+        <div class="center"> <span>В категории пока нет постов </span></div>
+
+        {% endif %}
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

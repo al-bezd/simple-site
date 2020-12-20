@@ -231,9 +231,6 @@ class ImageSliderBlock(blocks.StructBlock):
         SingleImageSlide(),
         label="Image",
     )
-
-
-
     class Meta:
         template = 'wagtail_blocks/image_slider.html'
         icon = 'fa-slideshare'
