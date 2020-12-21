@@ -32,10 +32,3 @@
     margin-right: 0.6em;
 
    }
-   svg{
-       color:#bfbebd
-   }
-   svg:hover{
-     color:red;
-     transition: 1s;
-   }

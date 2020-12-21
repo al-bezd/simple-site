@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.yandex',
 
+    'wagtail_color_panel',
+
+
+
 ]
 
 MIDDLEWARE = [
